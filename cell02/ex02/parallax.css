@@ -1,7 +1,7 @@
 * {
     padding: 0px;
     margin: 0px;
-    border-collapse: collapse;
+
 }
 
 .column {
@@ -22,7 +22,6 @@ hr.solid{
 }
 
 .centrer{
-    color:black;
     position: relative;
     top: 50%;
     left: 50%;

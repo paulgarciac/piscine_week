@@ -28,6 +28,7 @@ td, tr, a, table, h4{
 }
 
 h4 {
+    margin-top: 20px;
     padding-top: 15px;
     padding-bottom: 15px;
 }
