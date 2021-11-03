@@ -1,0 +1,50 @@
+.column {
+    width: 40%;
+    padding: 10px;
+    float: left;
+}
+
+hr.solid{
+    border-top: 1px solid #000;
+    width: 80%
+}
+
+.copyright{
+    font-family: 'Courier New', monospace;
+    text-align: right;
+    font-style: italic;
+}
+
+.centrer{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color:black
+}
+
+.cells{
+    text-align: center;
+    width: 50vw;
+    border: 1px solid #000;
+}
+
+body, html{
+    height: 100%;
+    width: 100%;
+}
+
+.bg1, .bg2  {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg1  {
+    background-image: url("img1.jpg");
+}
+
+.bg2  {
+    background-image: url("img2.jpg");
+}
