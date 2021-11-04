@@ -6,6 +6,7 @@
 button {
     position: relative;
     left: 50%;
+    top: 100px;
     background-color: white;
 }
 
@@ -15,4 +16,8 @@ button:hover {
 
 button:active {
     background-color: rgb(250, 209, 223);
+}
+
+body{
+    background-color: aliceblue;
 }
