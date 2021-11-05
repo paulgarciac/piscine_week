@@ -1,0 +1,23 @@
+*{
+    font-family: Avenir, sans-serif;
+    font-size: 1em;
+}
+
+button {
+    position: relative;
+    left: 50%;
+    top: 100px;
+    background-color: white;
+}
+
+button:hover {
+    background-color: lavenderblush;
+}
+
+button:active {
+    background-color: rgb(250, 209, 223);
+}
+
+body{
+    background-color: aliceblue;
+}

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html> 
+<html lang="fr">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--  <link rel='stylesheet' type='text/css' href='background.css'> -->
+
+
+<style>
+    input, select{
+        width: 10em;
+        height: 5em;
+    }
+</style>
+
+
+<body>
+
+    <div>
+       <input type="text" id="nb1" placeholder="Only integers" value="4">
+            <select name="op" id="op">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="%">%</option>
+            </select>
+       <input type="text" id="nb2" value="-1">
+       <input type="submit" id="submitID" value="Try me!">
+    </div> 
+
+
+</body>
+
+<!--   || MyOp == "%"   -->
+
+    <script>
+
+        let MySubmit = document.getElementById('submitID');
+
+        function UseMe(){ window.alert('Please, use the calc!')}       
+        let Timer = setInterval(UseMe, 30000)
+        let MyOp = document.getElementById('op').value;
+
+        MySubmit.addEventListener("click", function() {
+            
+            clearInterval(Timer);
+            Timer = setInterval(UseMe, 30000)
+
+            let MyNb1 = document.getElementById('nb1').value;
+            let MyNb2 = document.getElementById('nb2').value;
+            let MyOp = document.getElementById('op').value;
+
+            if( (!Number.isInteger(parseInt(MyNb2)) || !Number.isInteger(parseInt(MyNb1)) ) || ( MyNb1 < 0 || MyNb2 < 0 ) ) {
+                window.alert("Error :( Only Integers please !");
+                return;
+            } 
+
+            if( (MyOp === "/" || MyOp === "%") && parseInt(MyNb2) === 0 ) {
+                window.alert("Don't divide by 0, its over 9000 !!");
+                console.log("Don't divide by 0, its over 9000 !!");
+                return;
+            } else if (MyOp === "/") {
+                window.alert( parseInt(MyNb1)/parseInt(MyNb2) );
+                console.log( parseInt(MyNb1)/parseInt(MyNb2) );
+            } else if (MyOp === "%") {
+                window.alert(parseInt(MyNb1) % parseInt(MyNb2));
+                console.log( parseInt(MyNb1) % parseInt(MyNb2) );
+            }
+
+            if( (MyOp === "+") ) {
+                window.alert(parseInt(MyNb1) + parseInt(MyNb2));
+                console.log( parseInt(MyNb1) + parseInt(MyNb2) );
+            }
+
+            if( (MyOp === "*") ) {
+                window.alert( parseInt(MyNb1) * parseInt(MyNb2) );
+                console.log( parseInt(MyNb1) * parseInt(MyNb2) );
+            }
+
+            if( (MyOp === "-") ) {
+                window.alert( parseInt(MyNb1) - parseInt(MyNb2) );
+                console.log( parseInt(MyNb1) - parseInt(MyNb2) );
+            }
+
+        }
+        );
+
+    </script>
+
+</html>
