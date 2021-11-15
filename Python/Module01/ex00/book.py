@@ -15,7 +15,7 @@ class book:
     def get_recipes_by_types(self, recipe_type):
         #"Get all recipe names for a given recipe_type " 
         pass
-    def add_recipe(self):
+    def add_recipe(self):\
         creaName = input("CREATION - Please enter the recipe's name you want to create:" + f"\n")
         creaDifficulty = input("Please enter the difficulty of this recipe from 1 to 5:" + f"\n")
         creatTime = input("Please enter the time needed (in minutes) to realise your recipe:" + f"\n")
