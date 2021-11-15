@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html> 
+<html lang="fr">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--  <link rel='stylesheet' type='text/css' href='background.css'> -->
+<script>window.jQuery || document.write('<script src="jquery-3.6.0.min.js"><\/script>')</script>
+
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: red;
+        color: seashell;
+        text-align: center;
+        }
+    }    
+    
+</style>
+
+
+<body>
+
+    <div style="color: seashell;">
+        <h2 style="padding-top: 45%;">Balloon</h2>
+    </div> 
+
+
+</body>
+
+    <script>
+                
+
+        $("div").mouseleave(function(){
+                
+                if( parseInt($("div").css("width") ) > 199 ) {
+                    // $("div").css({"width" : 400});
+                    $("div").css({"width" : parseInt($("div").css("width")) - 5 }) 
+                    $("div").css({"height" : parseInt($("div").css("height")) - 5 })
+                }
+
+                // couleurs reverse sens quand mouseout
+                if($("div").css("background-color") == "rgb(0, 0, 255)"){
+                    $("div").css({"background-color": "green"});
+                    return;}
+                if($("div").css("background-color") == "rgb(0, 128, 0)"){
+                    $("div").css({"background-color": "red"});
+                    return;}
+                if($("div").css("background-color") == "rgb(255, 0, 0)"){
+                    $("div").css({"background-color": "blue"});
+                    return;
+                }
+
+        });
+
+        $("div").click(function(){
+            //fait grossir le ballon quand click 
+            $("div").css({"height" : parseInt($("div").css("height")) + 10 })
+            $("div").css({"width" : parseInt($("div").css("width")) + 10 })
+            // Fait exploser le ballon > 420px
+            if( parseInt($("div").css("width") ) > 420 ){
+                $("div").css({"width" : 100})
+                $("div").css({"height" : 100})
+                console.log("in the explos")
+            }
+
+            // couleurs bon sens quand click
+            if($("div").css("background-color") == "rgb(0, 0, 255)"){
+                    $("div").css({"background-color": "red"});
+                    return;}
+            if($("div").css("background-color") == "rgb(0, 128, 0)"){
+                    $("div").css({"background-color": "blue"});
+                    return;}
+            if($("div").css("background-color") == "rgb(255, 0, 0)"){
+                    $("div").css({"background-color": "green"});
+                    return;
+            }
+
+        });
+
+      $(document).ready(function(){
+
+      });
+
+    </script>
+
+</html>

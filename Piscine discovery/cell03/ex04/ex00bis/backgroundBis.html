@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html> 
+<html lang="fr">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel='stylesheet' type='text/css' href='background.css'>
+<script>window.jQuery || document.write('<script src="jquery-3.6.0.min.js"><\/script>')</script>
+
+
+<body>
+
+<button>Click on me to change <br> the background color</button>
+
+<h1>Urbi et orbi</h1>
+
+</body>
+
+
+        <script>
+
+            $(document).ready(function(){
+                
+
+                $("button").click(function(){
+                    var a = Math.floor(Math.random() * 56) + 200;
+                    var b = Math.floor(Math.random() * 56) + 200;
+                    var c = Math.floor(Math.random() * 56) + 200;
+                    $("body").css({"background-color": "rgb(" + a + ", " + b + ", " + c + ")" });
+                });
+    
+            });
+    
+        </script>
+
+
+<!-- <script>
+
+    let myHeading = document.querySelector('h1');
+    myHeading.textContent = '      Générateur de couleur pastel';
+
+    let myButton = document.querySelector('button');
+    let myBody = document.querySelector('body');
+
+    myButton.addEventListener("click", function() {
+        
+        let a = Math.floor(Math.random() * 56) + 200;
+        let b = Math.floor(Math.random() * 56) + 200;
+        let c = Math.floor(Math.random() * 56) + 200;
+        console.log(a, b, c);
+        console.log("Vous venez de générer une couleur pastel !");
+        myBody.style.backgroundColor = `rgb(${a}, ${b}, ${c})`;
+
+    }
+    );
+
+    myButton.textContent = 'click me!';
+
+</script> -->
+    
+
+</html>

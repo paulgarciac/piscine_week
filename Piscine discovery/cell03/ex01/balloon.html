@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html> 
+<html lang="fr">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!--  <link rel='stylesheet' type='text/css' href='background.css'> -->
+
+<style>
+    div{
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: red;
+        color: seashell;
+        text-align: center;
+        }
+    }    
+    
+</style>
+
+
+<body>
+
+    <div onmouseout="changeColor()">
+        <h2 style="padding-top: 45%;">Balloon</h2>
+    </div> 
+
+
+</body>
+
+    <script>
+
+        let myBall = document.querySelector('div');
+        let myBody = document.querySelector('body');
+        
+        function changeColor(){
+            
+            if (parseInt(getComputedStyle(myBall).width) > 200) {
+                console.log("inside the hover");
+                myBall.style.width = parseInt(getComputedStyle(myBall).width) - 5 + "px";
+                myBall.style.height = parseInt(getComputedStyle(myBall).height) - 5 + "px";
+            }
+
+            if (getComputedStyle(myBall).backgroundColor == "rgb(0, 0, 255)") {
+                myBall.style.backgroundColor = "green";
+                return;}
+            if (getComputedStyle(myBall).backgroundColor == "rgb(0, 128, 0)") {
+                myBall.style.backgroundColor = "red";
+                return;}
+            if (getComputedStyle(myBall).backgroundColor == "rgb(255, 0, 0)") { 
+                myBall.style.backgroundColor = "blue";
+                return;
+            }
+
+        };
+
+        myBall.addEventListener("click", function() {
+            
+            console.log(getComputedStyle(myBall).width)
+            myBall.style.width = parseInt(getComputedStyle(myBall).width) + 10 + "px";
+            myBall.style.height = parseInt(getComputedStyle(myBall).height) + 10 + "px";
+
+            if (parseInt(getComputedStyle(myBall).width) > 420 && parseInt(getComputedStyle(myBall).height) > 420 ) { 
+                myBall.style.width = "100px";
+                myBall.style.height = "100px";
+            }
+
+            if (getComputedStyle(myBall).backgroundColor == "rgb(0, 0, 255)") {
+                myBall.style.backgroundColor = "red";
+                return;}
+            if (getComputedStyle(myBall).backgroundColor == "rgb(0, 128, 0)") {
+                myBall.style.backgroundColor = "blue";
+                return;}
+            if (getComputedStyle(myBall).backgroundColor == "rgb(255, 0, 0)") { 
+                myBall.style.backgroundColor = "green";
+                return;
+            }
+
+        }
+        );
+
+    </script>
+
+</html>

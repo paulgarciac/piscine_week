@@ -1,0 +1,12 @@
+# dans Python 
+help("modules") #permet de lister les packages
+# dans le terminal 
+pip freeze # permet de lister les packages avec leurs versions
+
+from pkg_resources import get_distribution
+pkg = get_distribution('package_name') # permet d'obtenir deux lignes de metadata
+
+package = [numpy for numpy in pip.get_installed_distributions() if numpy.project_name == 'package_name'][0]
+
+# • Search for PyPI packages whose name or summary contains "tesseract".
+# • Freeze the packages and their current versions in a requirements.txt file you have to turn-in.
