@@ -18,9 +18,9 @@ class Vector:
 
     def shape(self):
         if self.__isColumn == False:
-            return (1, len(self.datalist))
+            return (1, len(self.datalist[:]))
         if self.__isColumn == True:
-            return (len(self.datalist), 1)
+            return (len(self.datalist[:]), len(self.datalist[0][:]))
 
     def __add__(v1, v2): # ici, la methode appelle self (ici appele v1)
         if isinstance(v2, Vector):
@@ -39,11 +39,21 @@ class Vector:
             else:
                 print("vectors must be of the same size")
 
-    def __dot__(v1, v2):
+    # def __dot__(v1, v2):
 
     def T(self):
-        for i in range(len(v1)):
-            
-
-
-        
+        T = []
+        i = 0
+        j = 0
+        while j < len(self.datalist[0][:]): # create the dimensions necessary for the transpose
+            T.append([])
+            j += 1
+        while i < len(self.datalist[:]):
+            j = 0
+            while j < len(self.datalist[0][:]):
+                print("i : ", i, ". j :", j)
+                print(self.datalist[i][j])
+                T[j].append(self.datalist[i][j])
+                j += 1
+            i += 1
+        return T
