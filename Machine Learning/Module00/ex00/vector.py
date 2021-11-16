@@ -45,14 +45,20 @@ class Vector:
             T = []
             i = 0
             j = 0
-            while i < lig: # create the dimensions necessary for the transpose
+            while i < lig: # create the dimensions necessary
                 T.append([])
                 i += 1
             i = 0
             while i < lig:
                 j = 0
                 while j < col:
-                    T[i].append(self.datalist[i][j]*v2.datalist[i][j])
+                    Zij = 0
+                    print("print list to sumprod", i, j)
+                    print(self.datalist[i][:], [row[j] for row in v2.datalist])
+                    Xi = (self.datalist[i][:]) # Xi: (where ":" = all)
+                    Yj = ([row[j] for row in v2.datalist]) #Y:j
+                    print(sum(i*j for i,j in zip(Xi, Yj)))
+                    T[i].append(sum(i*j for i,j in zip(Xi, Yj)))
                     j += 1
                 i += 1
             return Vector(T)
@@ -66,7 +72,7 @@ class Vector:
             j += 1
         while i < len(self.datalist[:]):
             j = 0
-            while j < len(self.datalist[0][:]):
+            while j < len(self.datalist[0][:]):               
                 T[j].append(self.datalist[i][j])
                 j += 1
             i += 1
@@ -74,19 +80,23 @@ class Vector:
 
     def __mul__(self, v2): #multipling matrix and vector columns one-by-one.
         if isinstance(v2, Vector):
-            lig = len(self.datalist[:]) # nb of lines ; vv
-            col = len(v2.datalist[0][:]) # nb of columns ; maxmimal in the case of a row vector.
-            T = []
-            i = 0
-            j = 0
-            while i < lig: # create the dimensions necessary for the transpose
-                T.append([])
-                i += 1
-            i = 0
-            while i < lig:
+            if self.shape() == v2.shape():
+                lig = len(self.datalist[:]) # nb of lines ; vv
+                col = len(v2.datalist[0][:]) # nb of columns ; maxmimal in the case of a row vector.
+                T = []
+                i = 0
                 j = 0
-                while j < col:
-                    T[i].append(self.datalist[i][j]*v2.datalist[i][j])
-                    j += 1
-                i += 1
-            return Vector(T)
+                while i < lig: # create the dimensions necessary for the transpose
+                    T.append([])
+                    i += 1
+                i = 0
+                while i < lig:
+                    j = 0
+                    while j < col:
+                        T[i].append(self.datalist[i][j]*v2.datalist[i][j])
+                        j += 1
+                    i += 1
+                return Vector(T)
+            else:
+                print("vectors must be of the same shape to be multiplied")
+                exit()
