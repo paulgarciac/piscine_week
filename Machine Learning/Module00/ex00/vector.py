@@ -12,36 +12,52 @@ class Vector:
             self.datalist = datalist
             self.__isColumn = False
         else:
-            print("Objects must be lists or lists of lists (columns)")
+            print("Objects must be lists or lists of lists (columns or vectors)")
             self.__isColumn = None
             exit()
 
-    def shape(self):
-        if self.__isColumn == False:
-            return (1, len(self.datalist[:]))
-        if self.__isColumn == True:
+    def shape(self): #working for columns and matrix. Row vectors are not working here.
             return (len(self.datalist[:]), len(self.datalist[0][:]))
 
-    def __add__(v1, v2): # ici, la methode appelle self (ici appele v1)
+    def __add__(self, v2): # ici, la methode appelle self (ici appele self)
         if isinstance(v2, Vector):
-            if len(v1.datalist) == len(v2.datalist):
-                v3 = []
-                if (v1.__isColumn == True and v2.__isColumn == True):
-                    v1_ = [i[0] for i in v1.datalist]
-                    v2_ = [i[0] for i in v2.datalist]
-                    for i in range(len(v1_)):
-                        v3.append([v1_[i] + v2_[i]])
+            v3 = []
+            if (self.__isColumn == False and v2.__isColumn == False):
+                    for i in range(len(self.datalist)):
+                        v3.append(self.datalist[i] + v2.datalist[i])
                     return v3
-                elif (v1.__isColumn == False and v2.__isColumn == False):
-                    for i in range(len(v1.datalist)):
-                        v3.append(v1.datalist[i] + v2.datalist[i])
+            elif len(self.datalist[:]) == len(v2.datalist[:]):
+                if (self.__isColumn == True and v2.__isColumn == True):
+                    self_ = [i[0] for i in self.datalist]
+                    v2_ = [i[0] for i in v2.datalist]
+                    for i in range(len(self_)):
+                        v3.append([self_[i] + v2_[i]])
                     return v3
             else:
                 print("vectors must be of the same size")
+        else:
+            print("the second object must be a vector")
 
-    # def __dot__(v1, v2):
+    def __dot__(self, v2):
+        if isinstance(v2, Vector):
+            lig = len(self.datalist[:]) # nb of lines ; vv
+            col = len(v2.datalist[0][:]) # nb of columns ; maxmimal in the case of a row vector.
+            T = []
+            i = 0
+            j = 0
+            while i < lig: # create the dimensions necessary for the transpose
+                T.append([])
+                i += 1
+            i = 0
+            while i < lig:
+                j = 0
+                while j < col:
+                    T[i].append(self.datalist[i][j]*v2.datalist[i][j])
+                    j += 1
+                i += 1
+            return Vector(T)
 
-    def T(self):
+    def T(self): #working for columns and matrix. Row vectors are not working here.
         T = []
         i = 0
         j = 0
@@ -51,9 +67,26 @@ class Vector:
         while i < len(self.datalist[:]):
             j = 0
             while j < len(self.datalist[0][:]):
-                print("i : ", i, ". j :", j)
-                print(self.datalist[i][j])
                 T[j].append(self.datalist[i][j])
                 j += 1
             i += 1
-        return T
+        return Vector(T)
+
+    def __mul__(self, v2): #multipling matrix and vector columns one-by-one.
+        if isinstance(v2, Vector):
+            lig = len(self.datalist[:]) # nb of lines ; vv
+            col = len(v2.datalist[0][:]) # nb of columns ; maxmimal in the case of a row vector.
+            T = []
+            i = 0
+            j = 0
+            while i < lig: # create the dimensions necessary for the transpose
+                T.append([])
+                i += 1
+            i = 0
+            while i < lig:
+                j = 0
+                while j < col:
+                    T[i].append(self.datalist[i][j]*v2.datalist[i][j])
+                    j += 1
+                i += 1
+            return Vector(T)
